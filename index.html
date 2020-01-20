@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Time Tables</title>
+    </head>
+    <body>
+        <table>
+            <th>
+                <canvas id="timesTable" width="600" height="600"></canvas>
+            </th>
+            <th>
+                <table>
+                    <tr>
+                        <th>Auto:<input type="checkbox" id="auto"></th>
+                    </tr>
+                    <tr>
+                        <th>Increment:</th>
+                        <th><input type="number" id="increment" value="0.01" min="0.005" max="0.5" step="0.005"></th>
+                    </tr>
+                    <tr>
+                        <th>Multiplier:</th>
+                        <th><input type="number" id="multiplier" value="2.000" min="0" max="200.000" step="0.01"></th>
+                    </tr>
+                </table>
+            </th>
+            
+        </table>
+        <script src="main.js"></script>
+    </body>
+</html>
