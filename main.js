@@ -2,7 +2,7 @@ var canvas = document.getElementById('timesTable');
 var ctx;
 
 var mod = 200.000;
-var mod2 = mod;
+var mod = mod;
 var multiplier = 2.000;
 var direction = 0.01;
 
@@ -23,11 +23,15 @@ function tick() {
 
 function update() {
     if(document.getElementById("auto").checked === true) {
-        multiplier += parseFloat(document.getElementById("increment").value);
+        mod = parseInt(document.getElementById("mod").value);
+        multiplier = parseFloat(document.getElementById("multiplier").value) + parseFloat(document.getElementById("increment").value);
+
         multiplier = (multiplier + mod) % mod;
+        multiplier = Math.floor(multiplier * 1000) / 1000;
+
         document.getElementById("multiplier").value = (multiplier).toString(10);
-        //console.log(multiplier);
     } else {
+        mod = parseInt(document.getElementById("mod").value);
         multiplier = parseFloat(document.getElementById("multiplier").value);
     }
     document.getElementById("multiplier").step = document.getElementById("increment").value;
@@ -40,9 +44,9 @@ function draw() {
     ctx.arc(300, 300, 290, 0, 2 * Math.PI);
     ctx.stroke();
 
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = parseFloat(document.getElementById("thickness").value);
 
-    for(var i = 0; i < mod2; i++) {
+    for(var i = 0; i < mod; i++) {
         ctx.beginPath();
         ctx.moveTo(Math.cos((Math.PI * 2 * i)/mod) * 290 + 300, Math.sin((Math.PI * 2 * i)/mod) * 290 + 300);
         ctx.lineTo(Math.cos((Math.PI * 2 * i * multiplier)/mod) * 290 + 300, Math.sin((Math.PI * 2 * i * multiplier)/mod) * 290 + 300);
